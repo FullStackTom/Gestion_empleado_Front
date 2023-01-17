@@ -1,0 +1,84 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de Empleado</h3>
+    <form (ngSubmit)= "onSubmit()" #empleadoForm = "ngForm">
+        <div class="form-group">
+            <label >Nombre</label>
+            <input type="text" 
+            class="form-control"
+            name="nombre"
+            id="nombre"
+            [(ngModel)]="empleado.nombre"
+            required
+            minlength="4"
+            maxlength="10"
+            placeholder="Digite el Nombre"
+            #nombre = "ngModel">
+            <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched ) ">
+                <small *ngIf= "nombre.errors?.['required']">
+                    El campo es requerido
+                  </small>
+                  <small *ngIf= "nombre.errors?.['minlength']">
+                    Tiene que tener minimo 4 caracteres
+                  </small>
+                  <small *ngIf= "nombre.errors?.['maxlength']">
+                    Tiene que tener maximo 10 caracteres
+                  </small>              
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >Apellido</label>
+            <input type="text" 
+            class="form-control"
+            name="apellido"
+            id="apellido"
+            [(ngModel)]="empleado.apellido"
+            required
+            minlength="4"
+            maxlength="10"
+            placeholder="Digite el Apellido"
+            #apellido = "ngModel">
+            <div class="alert alert-danger" *ngIf= "apellido.invalid && (apellido.dirty || apellido.touched ) ">
+                <small *ngIf= "apellido.errors?.['required']">
+                    El campo es requerido
+                  </small>
+                  <small *ngIf= "apellido.errors?.['minlength']">
+                    Tiene que tener minimo 4 caracteres
+                  </small>
+                  <small *ngIf= "apellido.errors?.['maxlength']">
+                    Tiene que tener maximo 10 caracteres
+                  </small>              
+                
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label >Email</label>
+            <input type="text" 
+            class="form-control"
+            name="email"
+            pattern ="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+            id="email"
+            [(ngModel)]="empleado.email"
+            required
+            minlength="4"
+            maxlength="50"
+            placeholder="Digite el correo"
+            #email = "ngModel">
+            <div class="alert alert-danger" *ngIf= "email.invalid && (apellido.dirty || email.touched ) ">
+                <small *ngIf= "email.errors?.['required']">
+                    El campo es requerido
+                  </small>
+                  <small *ngIf= "email.errors?.['pattern']">
+                    Por favor digite el correo con el formato: usuario@email.com
+                  </small>                            
+                
+            </div>
+            <br>
+        </div>
+
+        <button class="btn btn-success" [disabled]= "!empleadoForm.form.valid">Guardar</button>     
+    </form>    
+</div>
